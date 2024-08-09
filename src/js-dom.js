@@ -106,7 +106,38 @@ redBtn.addEventListener("click", changeColorToRed);
 //   - calls your function that calculates a factorial
 //   - puts the result of the function inside the "result" span
 
-/// TODO: replace this with your code
+
+
+
+document.querySelector("#factorial-calculator").addEventListener("submit", (evt) => {
+  evt.preventDefault();
+  const factInput = document.querySelector("#factorial-input").value;
+  let resultText = document.querySelector("#result");
+
+    let newNum = factInput - 1;
+    let result = factInput;
+    
+    while (newNum > 1) {
+      result = result * newNum;
+      newNum--;
+    }
+    resultText.textContent = result;
+  });
+
+
+// function calculateFact(factInput) {
+//   let newNum = factInput - 1;
+//   let result = factInput;
+//   while (newNum > 1) {
+//     result = result * newNum;
+//     newNum--;
+//     console.log(result);
+//   }
+//   let resultText = result;
+// // console.log(resultText);
+// };
+
+
 
 // Validate a form
 //
@@ -123,4 +154,16 @@ redBtn.addEventListener("click", changeColorToRed);
 // the feedback text to say "The word must be at least 4 characters long." and
 // change the color of the text to red..
 
-/// TODO: replace this with your code
+
+document.querySelector('#recommend-word').addEventListener('submit', (evt) => {
+  evt.preventDefault();
+  const word = document.querySelector("#word").value;
+  const feedback = document.querySelector(".form-feedback");
+  if (word.length < 3) {
+    feedback.textContent = "The word must be at least 4 characters long.";
+    feedback.style.color = "red";
+  } if (word.length >= 3) {
+    feedback.textContent = "Thanks for your submission!";
+    feedback.style.color = "green";
+  }
+});
