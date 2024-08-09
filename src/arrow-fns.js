@@ -5,7 +5,7 @@
 // Ex.:
 //   giveMeTwo();
 //   => 2
-const giveMeTwo = undefined;
+const giveMeTwo = () => 2;
 
 // Set the value of addNums to an arrow function that takes in two numbers and
 // returns their sum.
@@ -13,7 +13,7 @@ const giveMeTwo = undefined;
 // Ex.:
 //   addNums(1, 2);
 //   => 3
-const addNums = undefined;
+const addNums = (num1, num2) => num1 + num2;
 
 // Set the value of max to an arrow function that takes in two numbers and
 // returns the largest one.
@@ -21,7 +21,7 @@ const addNums = undefined;
 // Ex.:
 //   max(1, 2);
 //   => 2
-const max = undefined;
+const max = (num1, num2) => Math.max(num1, num2);
 
 // Given an array of numbers, return a new array that only includes the even
 // numbers. Do this using array iteration methods. Do NOT use a for loop.
@@ -29,7 +29,10 @@ const max = undefined;
 // Ex.:
 //   evens([1, 2, 3, 4, 5]);
 //   => [2, 4]
-function evens(nums) {}
+const evens = (nums) => {
+  const isEven = (num) => num % 2 === 0;
+  return nums.filter(isEven);
+}
 
 // Given an array of names, return a new array of greetings for each name. Do
 // this using array iteration methods. Do NOT use a for loop.
@@ -37,7 +40,8 @@ function evens(nums) {}
 // Ex.:
 //   createGreetings(['Clive', 'Jill', 'Torgal']);
 //   => ['Hello, Clive!', 'Hello, Jill!', 'Hello, Torgal!']
-function createGreetings(names) {}
+
+const createGreetings = (names) => names.map((name) => "Hello, " + name + "!");
 
 // Given an array of words, return a new array where each word is uppercased
 // and only includes words that are longer than 4 characters. Do this using
@@ -46,6 +50,22 @@ function createGreetings(names) {}
 // Ex.:
 //   loudLongWords(['apple', 'pear', 'cake', 'pinata']);
 //   => ['APPLE', 'PINATA']
-function loudLongWords(words) {}
+
+const loudLongWords = (arrayWords) => {
+  let biggerThanFour = [];
+  for (let i = 0; i < arrayWords.length; i++)
+  if (arrayWords[i].length > 4) {
+    biggerThanFour.push(arrayWords[i]);
+  }
+
+  const capitalize = (word) => {
+    return word.toUpperCase();
+  }
+
+  const capitalizeWords = biggerThanFour.map(capitalize);
+
+  return capitalizeWords;
+}
+
 
 export { addNums, createGreetings, evens, giveMeTwo, loudLongWords, max };
