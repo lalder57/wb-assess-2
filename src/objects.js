@@ -14,7 +14,11 @@
 //   ]);
 //   => ['Gale Dekarios', 'Wyll Ravengard', 'Karlach Cliffgate'];
 function getNames(people) {
-  
+  const arrayNames = [];
+  for (let i = 0; i < people.length; i++) {
+      arrayNames.push(people[i].firstName + ' ' + people[i].lastName);
+  }
+  return arrayNames;
 }
 
 // Given an object representing a person, return their full name (first name and last name).
@@ -26,7 +30,10 @@ function getNames(people) {
 // Ex.:
 //   getName({ firstName: 'Gale', lastName: 'Dekarios', location: 'Waterdeep' });
 //   => 'Gale Dekarios'
-function getNameUsingDestructuring(person) {}
+function getNameUsingDestructuring(person) {
+  const {firstName, lastName} = person;
+  return firstName + " " + lastName;
+}
 
 // Given an array of objects representing people, return a new array of the
 // people matching the given location.
@@ -45,8 +52,11 @@ function getNameUsingDestructuring(person) {}
 //     { firstName: 'Wyll', lastName: 'Ravengard', location: "Baldur's Gate" },
 //     { firstName: 'Astarion', lastName: 'Ancunin', location: "Baldur's Gate" }
 //   ];
-function getPeopleByLocation(people, location) {}
-
+function getPeopleByLocation(people, location) {
+  const locationMatches = (person) => person.location === location;
+  const newPeople = people.filter(locationMatches);
+  return newPeople;
+}
 // Translate a phrase to pirate talk.
 //
 // Given an English phrase, use the EN_PIRATE_LOOKUP object to translate words
@@ -74,7 +84,39 @@ const EN_PIRATE_LOOKUP = {
   hello: 'ahoy',
 };
 
-function translateToPirateTalk(phrase) {}
+function translateToPirateTalk(phrase) {
+  const phraseArray = phrase.split(" ");
+    for (let i = 0; i < phrase.length; i++) {
+        if (phraseArray[i] === "excuse") {
+          phraseArray[i] = "avast";
+        } else if (phraseArray[i] === "sir") {
+          phraseArray[i] = "matey";
+        } else if (phraseArray[i] === "is") {
+          phraseArray[i] = "be";
+        } else if (phraseArray[i] === "restroom") {
+          phraseArray[i] = "head";
+        } else if (phraseArray[i] === "student") {
+          phraseArray[i] = "swabbie";
+        } else if (phraseArray[i] === "friend") {
+          phraseArray[i] = "matey";
+        } else if (phraseArray[i] === "resaurant") {
+          phraseArray[i] = "galley";
+        } else if (phraseArray[i] === "your") {
+          phraseArray[i] = "yer";
+        } else if (phraseArray[i] === "are") {
+          phraseArray[i] = "be";
+        } else if (phraseArray[i] === "my") {
+          phraseArray[i] = "me";
+        } else if (phraseArray[i] === "hotel") {
+          phraseArray[i] = "fleabag inn";
+        } else if (phraseArray[i] === "hello") {
+          phraseArray[i] = "ahoy";
+        }
+      }
+      let phraseString = phraseArray.join(" ");
+      return phraseString;
+}
+
 
 // Return the number of occurrences of each word in a string.
 // This function doesn't handle punctuation and is case-sensitive, so you can
@@ -83,7 +125,10 @@ function translateToPirateTalk(phrase) {}
 // Ex.:
 //   wordCount('hello world')
 //   => { hello: 1, world: 1 }
-function wordCount(str) {}
+function wordCount(str) {
+  
+
+}
 
 // Given an object representing a bug, return true if the given bug is
 // available in the given month.
