@@ -8,7 +8,18 @@
 // update and say "Log out". If a user clicks on the button again, its text
 // should switch from "Log Out" to "Log In".
 
-/// TODO: replace this with your code
+const logInBtn = document.querySelector("#auth");
+
+function updateLogInBtn() {
+  if (logInBtn.textContent === "Log Out") {
+    logInBtn.textContent = "Log In"
+  } else {
+    logInBtn.textContent = "Log Out";
+    
+  }
+}
+
+logInBtn.addEventListener("click", updateLogInBtn);
 
 // Send an alert
 //
@@ -17,7 +28,15 @@
 // A user should be able to enter what they want the alert to say in the
 // text box. Then, they can submit the form to trigger the alert.
 
-/// TODO: replace this with your code
+const alertMessage = document.querySelector("#alert-message");
+const alertBtn = document.querySelector("#alert-button");
+
+function sendAlert() {
+  alert(alertMessage.value)
+}
+
+alertBtn.addEventListener("click", sendAlert);
+
 
 // Add an item
 //
@@ -34,7 +53,16 @@
 //     <li>Item</li>  <!-- This was added after double-clicking -->
 //   </ol>
 
-/// TODO: replace this with your code
+const addItemBtn = document.querySelector("#item-adder");
+const itemList = document.querySelector("#list");
+
+function addItem() {
+  const newItem = document.createElement("li");
+  newItem.textContent = "Item";
+  itemList.appendChild(newItem)
+}
+
+addItemBtn.addEventListener("dblclick", addItem);
 
 // Change colors
 //
@@ -45,7 +73,23 @@
 // Clicking on "Turn Stuff Red" should make text red and clicking on "Turn
 // Stuff Blue" should make text blue.
 
-/// TODO: replace this with your code
+const blueBtn = document.querySelector("#blue");
+const redBtn = document.querySelector("#red");
+const itemsToChange = document.querySelectorAll(".changes-colors");
+
+function changeColorToBlue() {
+  for (let i = 0; i < itemsToChange.length; i++)
+  itemsToChange[i].style.color = "blue";
+}
+
+blueBtn.addEventListener("click", changeColorToBlue);
+
+function changeColorToRed() {
+  for (let i = 0; i < itemsToChange.length; i++)
+    itemsToChange[i].style.color = "red";
+}
+
+redBtn.addEventListener("click", changeColorToRed);
 
 // Calculate factorial
 //
