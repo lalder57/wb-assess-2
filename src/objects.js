@@ -126,9 +126,19 @@ function translateToPirateTalk(phrase) {
 //   wordCount('hello world')
 //   => { hello: 1, world: 1 }
 function wordCount(str) {
-  
+  const strArray = str.split(" ");
+  const counts = {};
 
+  for (const word of strArray) {
+    if (counts[word] = counts[word]) {
+      counts[word] += 1;
+    } else {
+      counts[word] = 1;
+    }
+  }
+  return counts;
 }
+
 
 // Given an object representing a bug, return true if the given bug is
 // available in the given month.
@@ -150,7 +160,13 @@ function wordCount(str) {
 //     }
 //   }, 1);
 //   => true
-function isBugAvailable(bug, month) {}
+function isBugAvailable(bug, month) {
+  if (bug.availability.months.includes(month)) {
+    return true;
+  } else {
+    return false;
+  }
+}
 
 // Given an array of objects representing bugs, return an object that'll be
 // used to build a calendar. The keys of the object should be the months of the
@@ -193,7 +209,14 @@ function isBugAvailable(bug, month) {}
 //     12: [],
 //   }
 
-function buildBugHuntCalendar(bugs) {}
+function buildBugHuntCalendar(bugs) {
+  const calendarObj = {1: [], 2: [], 3: [], 4: [], 5: [], 6: [], 7: [], 8: [], 9: [], 10: [], 11: [], 12: [],};
+  for (const bug of bugs) {
+    for (let i = 0; i < bug.availability.months.length; i++) {
+      calendarObj[bug.availability.months[i]].push(bug.name);
+    }
+  } return calendarObj;
+}
 
 export {
   buildBugHuntCalendar,
